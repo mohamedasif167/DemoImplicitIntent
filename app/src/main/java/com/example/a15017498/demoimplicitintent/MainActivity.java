@@ -1,6 +1,7 @@
 package com.example.a15017498.demoimplicitintent;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnEmail;
+    Button btnEmail,btnRP;
     EditText editTextMessage;
 
     @Override
@@ -19,7 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
         editTextMessage=(EditText)findViewById(R.id.editTextMessage);
         btnEmail = (Button) findViewById(R.id.buttonEmail);
+        btnRP = (Button) findViewById(R.id.buttonRP);
 
+        //Intent by using google Chrome
+        btnRP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to display data
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                startActivity(rpIntent);
+
+            }
+        });
+
+        //Setting text inside email!
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
